@@ -78,6 +78,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-starter-hateoas'
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.security:spring-security-web:4.2.0.RELEASE'
+    
 
 	// Uncomment this if you want the HAL browser to render the /actuator endpoint
 	// See this link for details:
