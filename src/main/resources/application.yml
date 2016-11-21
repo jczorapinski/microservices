@@ -1,0 +1,10 @@
+#
+endpoints:
+  hypermedia:
+    enabled: true
+    
+management:
+  info:
+    git:
+      mode: full
+    
