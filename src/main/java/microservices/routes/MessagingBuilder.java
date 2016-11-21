@@ -6,10 +6,17 @@ import org.apache.camel.component.hazelcast.HazelcastConstants;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author jeff
+ *
+ */
 @Component
 @EnableConfigurationProperties
 public class MessagingBuilder extends RouteBuilder {
 
+	/**
+	 * @see org.apache.camel.builder.RouteBuilder#configure()
+	 */
 	@Override
 	public void configure() throws Exception {
 		// @formatter:off

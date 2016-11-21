@@ -6,16 +6,27 @@ import javax.usb.*;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author jeff
+ *
+ */
 @Profile("sudo")
 @Component
 public class UsbService {
 
+	/**
+	 * @throws Exception
+	 */
 	public UsbService() throws Exception {
 		UsbServices services = UsbHostManager.getUsbServices();
 		UsbHub root = services.getRootUsbHub();
 		printAttachedDevices(root);
 	}
 
+	/**
+	 * @param hub
+	 * @throws Exception
+	 */
 	@SuppressWarnings("rawtypes")
 	public void printAttachedDevices(UsbHub hub) throws Exception {
 		List devices = hub.getAttachedUsbDevices();

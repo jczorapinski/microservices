@@ -9,9 +9,13 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+      		url "https://plugins.gradle.org/m2/"
+    	}
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
+		classpath "gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17"
     }
 }
 
@@ -19,7 +23,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
-//apply plugin: 'com.gorylenko.gradle-git-properties'
+apply plugin: "com.gorylenko.gradle-git-properties"
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -33,35 +37,43 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 springBoot  {
-    buildInfo()
+    buildInfo{
+    	additionalProperties= [
+    		'NiFi': 'SUCKS Monkey Balls! This is my project, I can say what I want ^_^'
+    	]
+    }
 }
+
+// Uncomment this to enable remote debugging on local bootRun Task invocation.
+//bootRun {
+//    jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"
+//}
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
 	
-//	//
-//	compile 'de.codecentric:spring-boot-admin-server'
-//	compile 'de.codecentric:spring-boot-admin-server-ui'
+	// Uncomment this to experiment with the SB ADMIN libs
+	//compile 'de.codecentric:spring-boot-admin-server'
+	//compile 'de.codecentric:spring-boot-admin-server-ui'
 
-	//
+	// USB binding libs
     compile 'javax.usb:usb-api:1.0.2'
     compile 'org.usb4java:usb4java-javax:1.2.0'
 	
-	//
+	// HawtIO  JMX / Spring Boot / Camel UI 
 	compile 'io.hawt:hawtio-core:1.4.66'
 	compile 'io.hawt:hawtio-springboot:1.4.66'
-	
 
-	//
+	// Apache Camel
 	compile 'org.apache.camel:camel-core:2.18.0' 
 	compile 'org.apache.camel:camel-hazelcast:2.18.0' 
 	compile 'org.apache.camel:camel-metrics:2.18.0'
 	compile 'org.apache.camel:camel-servlet:2.18.0'  
     compile 'org.apache.camel:camel-spring-boot-starter:2.18.0' 
 
-	//
+	// Spring Boot / Data / Web / etc.
 	compile 'org.springframework.boot:spring-boot-actuator-docs'
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-starter-hateoas'
@@ -71,7 +83,6 @@ dependencies {
 	// See this link for details:
 	// http://docs.spring.io/spring-data/rest/docs/current/reference/html/#_the_hal_browser
 	// compile 'org.springframework.data:spring-data-rest-hal-browser'
-	
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
