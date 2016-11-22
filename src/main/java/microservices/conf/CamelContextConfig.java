@@ -48,6 +48,8 @@ public class CamelContextConfig {
 				springCamelContext.setName("microservices_ctx");
 				springCamelContext.setTracing(false);
 				springCamelContext.addRoutePolicyFactory(new MetricsRoutePolicyFactory());
+				// This is throwing and IllegalArgumentException for some
+				// reason. Figure out WHY!??!
 				// springCamelContext.setMessageHistoryFactory(new
 				// MetricsMessageHistoryFactory());
 			}
