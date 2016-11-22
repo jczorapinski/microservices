@@ -29,6 +29,7 @@ public class Application {
 	 */
 	public static void main(String... args) throws Exception {
 		System.setProperty(AuthenticationFilter.HAWTIO_AUTHENTICATION_ENABLED, "false");
+		System.setProperty("hazelcast.jmx", "true");
 		SpringApplication.run(Application.class, args);
 	}
 

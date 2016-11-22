@@ -11,3 +11,6 @@ management:
         target: 1.8
     git:
       mode: full
+# This did not work for some reason had to use System.setProperty in Application.class
+#hazelcast:
+#  jmx: true
