@@ -49,7 +49,7 @@ public class CamelContextConfig {
 				springCamelContext.setTracing(false);
 				springCamelContext.addRoutePolicyFactory(new MetricsRoutePolicyFactory());
 				// This is throwing and IllegalArgumentException for some
-				// reason. Figure out WHY!??!
+				// reason. Figure out WHY!??! I
 				// springCamelContext.setMessageHistoryFactory(new
 				// MetricsMessageHistoryFactory());
 			}

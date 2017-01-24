@@ -29,6 +29,7 @@ public class MessagingBuilder extends RouteBuilder {
 		 * 
 		 */
 		from("timer:queuePoller?period=60000")
+			.autoStartup(false)
 			.routeId("timerIpcMessages")
 			.setBody().constant("MESSSAGE: " + System.currentTimeMillis())
 			.log(LoggingLevel.INFO, "GOT HERE")
@@ -38,6 +39,7 @@ public class MessagingBuilder extends RouteBuilder {
 		 * 
 		 */
 		from("hazelcast:queue:ipcMessages")
+			.autoStartup(false)
 			.routeId("consumerIpcMessages")
 			.choice()
 				.when(header(HazelcastConstants.LISTENER_ACTION).isEqualTo(HazelcastConstants.ADDED))

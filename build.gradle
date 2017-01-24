@@ -31,6 +31,9 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
     mavenCentral()
+	maven {
+		url  "https://dl.bintray.com/jgoelen/maven"
+	}
 }
 
 sourceCompatibility = 1.8
@@ -57,6 +60,8 @@ dependencies {
 	// Uncomment this to experiment with the SB ADMIN libs
 	//compile 'de.codecentric:spring-boot-admin-server'
 	//compile 'de.codecentric:spring-boot-admin-server-ui'
+	compile("io.springfox:springfox-swagger2:2.6.1")
+    compile("io.springfox:springfox-swagger-ui:2.6.1")
 
 	// USB binding libs
     compile 'javax.usb:usb-api:1.0.2'
@@ -72,6 +77,7 @@ dependencies {
 	compile 'org.apache.camel:camel-metrics:2.18.0'
 	compile 'org.apache.camel:camel-servlet:2.18.0'  
     compile 'org.apache.camel:camel-spring-boot-starter:2.18.0' 
+	compile 'org.apache.camel:camel-tarfile:2.18.0'  
 
 	// Spring Boot / Data / Web / etc.
 	compile 'org.springframework.boot:spring-boot-actuator-docs'
@@ -79,6 +85,9 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-hateoas'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.security:spring-security-web:4.2.0.RELEASE'
+    
+    // Graphite Reporter for DropWizard Spring Boot AutoConfigurer
+    compile 'com.github.jgoelen:graphite-spring-boot-starter:0.2.0'
     
 
 	// Uncomment this if you want the HAL browser to render the /actuator endpoint
